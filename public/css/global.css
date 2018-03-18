@@ -1,0 +1,19 @@
+:root {
+	--icon: 38px;
+	--topbar: 60px;
+	/*--main: #1abc9c;*/
+	--main: #2c3e50;
+	--bg: white;
+	--body: #ecf0f1;
+}
+body {
+	font-family: 'Lato', sans-serif;
+	background: var(--body);
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+*{
+	/*outline: 1px solid rgba(255,0,0,0.5);*/
+}

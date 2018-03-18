@@ -1,0 +1,35 @@
+{
+  "name": "laces",
+  "version": "1.0.0",
+  "description": "Idk yet",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Filip Ditrich",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "connect-mongo": "^2.0.1",
+    "connect-redis": "^3.3.3",
+    "cookie-parser": "^1.4.1",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "gridfs-stream": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "multer": "*",
+    "multer-gridfs-storage": "^3.0.0",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "passport.socketio": "^3.7.0",
+    "socket.io": "*",
+    "socket.io-events": "^0.4.6"
+  }
+}

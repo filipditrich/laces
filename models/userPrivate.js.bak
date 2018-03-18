@@ -1,0 +1,151 @@
+var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
+
+var UserSchemaPrivate = mongoose.Schema({
+	username: {type: String, index: true},
+	password: {type: String},
+	email: {type: String},
+	name: {type: String},
+	stats: {
+		following: [{
+			username: {type: String},
+		}],
+		followers: [{
+			username: {type: String},
+		}],
+	},
+	logs: {
+		joined: {type: Date, default: Date.now},
+		last_login: {type: Date, default: Date.now},
+		online: {type: Boolean, default: false},
+	},
+	profile: {
+		profilePic: {type: String},
+		coverPhoto: {type: String},
+	}
+});
+
+var UserPrivate = module.exports = mongoose.model('UserPrivate', UserSchemaPrivate);
+
+module.exports.createUser = function(newUser, callback){
+	bcrypt.genSalt(10, function(err, salt){
+		bcrypt.hash(newUser.password, salt, function(err, hash){
+			newUser.password = hash;
+			newUser.save(callback);
+		})
+	})
+}
+
+module.exports.getUserByUsername = function(username, callback){
+	var query = {username: username};
+	UserPrivate.findOne(query, callback);
+}
+
+module.exports.getUserById = function(id, callback){
+	UserPrivate.findById(id, callback);
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+	bcrypt.compare(candidatePassword, hash, function(err, isMatch){
+		if (err) throw err;
+		callback(null, isMatch);
+	});
+}
+
+module.exports.createUser = function(newUser, callback){
+	newUser.save(callback);
+}
+
+module.exports.updateStatus = function(username, online, callback){
+	UserPrivate.update(
+		{username: username},
+		{$set: {'logs.online': online}},
+		function(err, res){
+			if (err) throw err;
+		}
+	);
+}
+
+module.exports.updateLastLogin = function(username, lastLogin, callback){
+	UserPrivate.update(
+		{username: username},
+		{$set: {'logs.last_login': lastLogin}},
+		callback
+	);
+}
+
+module.exports.updateProfilePic = function(username, picUrl, callback){
+	UserPrivate.update(
+		{username: username},
+		{$set: {'profile.profilePic' : picUrl}},
+		function(err, res){
+			if (err) throw err;
+		}
+	);
+}
+
+module.exports.updateCoverPhoto = function(username, picUrl, callback){
+	UserPrivate.update(
+		{username: username},
+		{$set: {'profile.coverPhoto' : picUrl}},
+		function(err, res){
+			if (err) throw err;
+		}
+	);
+}
+
+module.exports.newFollowing = function(me, who, callback){
+
+	UserPrivate.getUserByUsername(me, function(err, doc){
+		var following;
+		for (var i = 0; i < doc.stats.following.length; i++){
+			if (doc.stats.following[i].username == who){
+				// already following
+				following = true;
+			} else {
+				// not following
+				following = false;
+			}
+		}
+		if (!following){
+			UserPrivate.update(
+				{username: me},
+				{$addToSet: {'stats.following' : {username: who}}},
+				callback
+			);
+		} else {
+			console.log('already following!');
+		}
+	});
+}
+
+module.exports.newFollower = function(me, who, callback){
+	
+	UserPrivate.getUserByUsername(who, function(err, doc){
+		var follower;
+		for (var i = 0; i < doc.stats.followers.length; i++){
+			if (doc.stats.followers[i].username == me){
+				// already following
+				follower = true;
+			} else {
+				// not following
+				follower = false;
+			}
+		}
+		if (!follower){
+			UserPrivate.update(
+				{username: who},
+				{$addToSet: {'stats.followers' : {username: me}}},
+				callback
+			);
+		} else {
+			console.log('already follower!');
+		}
+	});
+
+}
+
+
+
+
+

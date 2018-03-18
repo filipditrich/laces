@@ -1,0 +1,835 @@
+/* ---------- MENU --------- */
+
+#top-bar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: var(--topbar);
+	background: var(--bg);
+	padding: 0px 50px;
+	box-sizing: border-box;
+	color: #bdc3c7;
+	z-index: 999;
+}
+#top-bar > .container {
+	height: 100%;
+}
+#top-bar .topbar-actions {
+	float: left;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: flex-start;
+	height: 100%;
+	position: relative;
+}
+#top-bar .topbar-actions > li {
+	margin: 0 10px;
+	position: relative;
+}
+#top-bar .topbar-actions > .selected {
+	color: var(--main);
+	border-bottom: 2px solid var(--main);
+}
+#top-bar .topbar-actions > .open {
+	color: var(--main);
+}
+#top-bar .topbar-actions > .ref-profile{
+	margin: 0 0 0 10px;
+}
+#top-bar .topbar-actions > .ref-home{
+	margin: 0;
+	/*order: 3;*/
+}
+#top-bar .topbar-actions > .ref-search {
+	/*order: 2;*/
+}
+#top-bar .topbar-actions > li > .topbar-icon-profile {
+	height: 100%;
+  	white-space: nowrap;
+}
+#top-bar .topbar-actions > li > .topbar-icon-profile:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+#top-bar .topbar-actions > li > .topbar-icon-profile img {
+	display: inline-block;
+  	vertical-align: middle;
+  	width: var(--icon);
+	height: var(--icon);
+  	border-radius: 50em;
+	border: 2px solid var(--main);
+	box-sizing: border-box;
+}
+#top-bar .topbar-actions > li > a {
+	display: table;
+	height: var(--icon);
+	width: var(--icon);
+}
+#top-bar .topbar-actions > li > a:not(.topbar-icon-profile) {
+	margin: calc((var(--topbar) - var(--icon)) / 2) 0;
+}
+#top-bar .topbar-actions > li > a > span {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+#top-bar .topbar-actions > .heading {
+	flex: 1 0 auto;
+	text-align: center;
+}
+#top-bar .topbar-actions > .heading > h1 {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+#top-bar .topbar-actions > .heading > h1 > span {
+	display: table-cell;
+	vertical-align: middle;
+	/*font-size: 1.6em;*/
+	font-size: calc(var(--icon) / 1.333);
+	font-weight: 200;
+}
+#top-bar .topbar-actions > .ref-search {
+	margin: 0 0 0 10px;
+	position: relative;
+	transition: all 0.25s;
+}
+#top-bar .topbar-actions > .ref-search.bar-present {
+	/*width: 175px;*/
+	padding-right: 175px;
+}
+#top-bar .topbar-actions > .ref-search.bar-present > input {
+	opacity: 1;
+}
+#top-bar .topbar-actions > .ref-search.bar-present > a > span:before {
+	color: var(--main);
+}
+#top-bar .topbar-actions > .ref-search > a {
+	z-index: 10;
+	position: relative;
+}
+#top-bar .topbar-actions > .ref-search > input {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: var(--icon);
+	top: calc((var(--topbar) - var(--icon)) / 2);
+	border: none;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	/*height: var(--icon);*/
+	background-color: var(--body);
+	width: 100%;
+	opacity: 0;
+	border-radius: 50em;
+	padding: 0 15px 0 38px;
+	z-index: 9;
+	transition: opacity .25s;
+}
+#top-bar .topbar-actions > .ref-search > input:focus {
+	outline: none;
+	resize: none;
+}
+
+/* ---------- PROFILE & SETTINGS --------- */
+
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown {
+	position: absolute;
+	width: 225px;
+	display: block;
+	height: auto;
+	right: 0;
+	top: 100%;
+	background-color: white;
+	box-sizing: border-box;
+	color: black;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.25);
+	visibility: hidden;
+	opacity: 0;
+	transition: all .125s ease-in-out;
+	overflow: visible; 
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown.visible {
+	/*display: block;*/
+	opacity: 1;
+	visibility: visible;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown .arrow {
+	position: absolute;
+	width: 0;
+	bottom: 100%;
+	right: 10px;
+	height: 0;
+	border-style: solid;
+	border-width: 0 10px 10px 10px;
+	border-color: transparent transparent white transparent;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul {
+	height: 100%;
+	width: 100%;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > li {
+	transition: all .1s;
+	height: 32px;
+	padding: 5px 0;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > li:nth-last-child(1){
+	border-radius: 0 0 5px 5px;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > li:not(.topbar-dropdown-heading):hover {
+	background-color: var(--main);
+	color: white;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > .topbar-dropdown-heading:hover {
+	color: var(--main);
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > li > a {	
+	display: table;
+	width: 100%;
+	height: 100%;
+	padding: 0 15px;
+	box-sizing: border-box;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > li > a > span {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 0.9em;
+}	
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > li > a > span:before {
+	margin-right: 10px;
+	color: inherit;
+	transition: 0s;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > .topbar-dropdown-heading {
+	/*color: green;*/
+	padding: 10px 0;
+	border-bottom: 1px solid rgba(0,0,0,.125);
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > .topbar-dropdown-heading > a >  span {
+	font-size: 1.125em;
+	font-weight: 500;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > .topbar-dropdown-heading > a > span > span {
+	display: block;
+	font-weight: 400;
+	font-size: 0.65em;
+	opacity: 0.7;
+}
+#top-bar .topbar-actions > .ref-profile .topbar-dropdown > ul > .topbar-dropdown-heading > a > span > span:before {
+	content: '@';
+}
+
+
+/* ---------- NOTIFICATIONS --------- */
+
+#top-bar .topbar-actions > .ref-notifications.notif-pres > a {
+	color: var(--main);
+	transform-origin: center top;
+}
+#top-bar .topbar-actions > .ref-notifications.notif-pres.shake > a {
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0) rotate(2deg);
+  }
+  
+  20%, 80% {
+    transform: translate3d(1px, 0, 0) rotate(0deg);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-1px, 0, 0) rotate(2deg);
+  }
+
+  40%, 60% {
+    transform: translate3d(1px, 0, 0) rotate(0deg);
+  }
+}
+#top-bar .topbar-actions > .ref-notifications > a > .nc {
+	display: none;
+}
+#top-bar .topbar-actions > .ref-notifications.notif-pres > a > .nc {
+	color: white;
+	position: absolute;
+	right: 7.5px;
+	background-color: #e74c3c;
+	width: 12px;
+	height: 12px;
+	border-radius: 50em;
+	display: table;
+	text-align: center;
+	border: 1px solid white; 
+}
+#top-bar .topbar-actions > .ref-notifications.notif-pres > a > .nc > span {
+	font-size: 0.6em;
+	display: table-cell;
+	vertical-align: middle;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > .no-notif {
+	display: table;
+	text-align: center;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > .no-notif span {
+	display: table-cell;
+	vertical-align: middle;
+	opacity: 0.5;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown {
+	position: absolute;
+	width: 275px;
+	display: block;
+	height: auto;
+	max-height: 500px;
+	overflow: scroll;
+	right: 0;
+	top: 100%;
+	background-color: white;
+	box-sizing: border-box;
+	color: black;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.25);
+	visibility: hidden;
+	opacity: 0;
+	transition: all .125s ease-in-out;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown.visible {
+	/*display: block;*/
+	opacity: 1;
+	visibility: visible;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown .arrow {
+	position: absolute;
+	width: 0;
+	bottom: 100%;
+	right: 10px;
+	height: 0;
+	border-style: solid;
+	border-width: 0 10px 10px 10px;
+	border-color: transparent transparent white transparent;
+	transition: all .1s;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown .arrow.color {
+	border-color: transparent transparent var(--main) transparent;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul {
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li {
+	transition: all .1s;
+	height: 60px;
+	padding: 5px 10px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	box-sizing: border-box;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li:not(.no-notif):hover {
+	background: var(--main);
+	color: white;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li[read="true"] {
+	color: rgba(0,0,0,0.5)
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li[read="false"] {
+	
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li > a {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li > img {
+	height: 100%;
+	border-radius: 50em;
+	margin-right: 10px;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li > .notification-container {
+	width: 100%;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li > .notification-container > .notification {
+	display: table;
+	height: 100%;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li > .notification-container .notification > span {
+	display: table-cell;
+	vertical-align: middle;
+	font-weight: 400;
+	font-size: 0.85em;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li > .notification-container .notification > span > strong {
+	font-weight: 700;
+}
+#top-bar .topbar-actions > .ref-notifications .topbar-dropdown > ul > li > .notification-container .notification > span > abbr {
+	display: block;
+	font-size: 0.75em;
+	text-decoration: none;
+	margin-top: 2.5px;
+}
+
+
+
+
+
+
+
+/* ---------- MESSAGES --------- */
+
+#top-bar .topbar-actions > .ref-messages.notif-pres > a {
+	color: var(--main);
+	transform-origin: center top;
+}
+#top-bar .topbar-actions > .ref-messages.notif-pres.shake > a {
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0) rotate(2deg);
+  }
+  
+  20%, 80% {
+    transform: translate3d(1px, 0, 0) rotate(0deg);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-1px, 0, 0) rotate(2deg);
+  }
+
+  40%, 60% {
+    transform: translate3d(1px, 0, 0) rotate(0deg);
+  }
+}
+#top-bar .topbar-actions > .ref-messages > a > .nc {
+	display: none;
+}
+#top-bar .topbar-actions > .ref-messages.notif-pres > a > .nc {
+	color: white;
+	position: absolute;
+	right: 7.5px;
+	background-color: #e74c3c;
+	width: 12px;
+	height: 12px;
+	border-radius: 50em;
+	display: table;
+	text-align: center;
+	border: 1px solid white; 
+}
+#top-bar .topbar-actions > .ref-messages.notif-pres > a > .nc > span {
+	font-size: 0.6em;
+	display: table-cell;
+	vertical-align: middle;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > .no-notif {
+	display: table;
+	text-align: center;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > .no-notif span {
+	display: table-cell;
+	vertical-align: middle;
+	opacity: 0.5;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown {
+	position: absolute;
+	width: 275px;
+	display: block;
+	height: auto;
+	max-height: 500px;
+	overflow-y: scroll;
+	right: 0;
+	top: 100%;
+	background-color: white;
+	box-sizing: border-box;
+	color: black;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.25);
+	visibility: hidden;
+	opacity: 0;
+	transition: all .125s ease-in-out;
+	overflow: visible;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown.visible {
+	/*display: block;*/
+	opacity: 1;
+	visibility: visible;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown .arrow {
+	position: absolute;
+	width: 0;
+	bottom: 100%;
+	right: 10px;
+	height: 0;
+	border-style: solid;
+	border-width: 0 10px 10px 10px;
+	border-color: transparent transparent white transparent;
+	transition: all .1s;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown .arrow.color {
+	border-color: transparent transparent var(--main) transparent;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul {
+	height: 100%;
+	width: 100%;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li {
+	transition: all .1s;
+	height: 60px;
+	padding: 5px 10px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	box-sizing: border-box;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li:not(.no-notif):hover {
+	background: var(--main);
+	color: white;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li > a {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li > img {
+	height: 100%;
+	border-radius: 50em;
+	margin-right: 10px;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li > .message-container {
+	width: 100%;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li > .message-container > .message-container-top {
+	display: table;
+	height: 50%;
+	width: 100%;
+	padding-top: 7.5px;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li > .message-container > .message-container-top > span {
+	display: table-cell;
+	vertical-align: top;
+	width: 85%;
+	font-size: 0.85em;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li > .message-container > .message-container-top > abbr {
+	display: table-cell;
+	vertical-align: top;
+	font-size: 0.7em;
+	text-decoration: none;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li > .message-container > .message-container-bottom {
+	width: 100%;
+	height: 50%;
+	display: table;
+}
+
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li > .message-container > .message-container-bottom > span {
+	display: table-cell;
+	vertical-align: top;
+	font-size: 0.8em;
+}
+
+
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li[read="true"] > .message-container > .message-container-top > span {
+	font-weight: 500;
+}
+
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li[read="true"] > .message-container > .message-container-bottom > span {
+	font-weight: 400;
+}
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li[read="false"] > .message-container > .message-container-top > span {
+	font-weight: 900;
+}
+
+#top-bar .topbar-actions > .ref-messages .topbar-dropdown > ul > li[read="false"] > .message-container > .message-container-bottom > span {
+	font-weight: 700;
+}
+
+
+
+/* ---------- SHOW MORE --------- */
+
+#top-bar .topbar-actions > li .topbar-dropdown > ul > .show-more {
+	display: table;
+	text-align: center;
+	height: auto !important;
+}
+#top-bar .topbar-actions > li .topbar-dropdown > ul > .show-more:hover {
+	background-color: transparent !important;
+}
+#top-bar .topbar-actions > li .topbar-dropdown > ul > .show-more:hover > a {
+	opacity: 1 !important;
+}
+#top-bar .topbar-actions > li .topbar-dropdown > ul > .show-more > a {
+	display: table-cell;
+	vertical-align: middle;
+	position: static !important;
+	font-size: 0.75em;
+	color: var(--main);
+	opacity: 0.8 !important;
+	font-weight: 300;
+}
+
+
+
+
+
+
+/* ---------- SEARCH --------- */
+
+#top-bar .topbar-actions > .ref-search.notif-pres > a {
+	color: var(--main);
+	transform-origin: center top;
+}
+#top-bar .topbar-actions > .ref-search.notif-pres.shake > a {
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0) rotate(2deg);
+  }
+  
+  20%, 80% {
+    transform: translate3d(1px, 0, 0) rotate(0deg);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-1px, 0, 0) rotate(2deg);
+  }
+
+  40%, 60% {
+    transform: translate3d(1px, 0, 0) rotate(0deg);
+  }
+}
+#top-bar .topbar-actions > .ref-search > a > .nc {
+	display: none;
+}
+#top-bar .topbar-actions > .ref-search.notif-pres > a > .nc {
+	color: white;
+	position: absolute;
+	right: 7.5px;
+	background-color: #e74c3c;
+	width: 12px;
+	height: 12px;
+	border-radius: 50em;
+	display: table;
+	text-align: center;
+	border: 1px solid white; 
+}
+#top-bar .topbar-actions > .ref-search.notif-pres > a > .nc > span {
+	font-size: 0.6em;
+	display: table-cell;
+	vertical-align: middle;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > .nothing-found {
+	display: table;
+	text-align: center;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > .nothing-found > span {
+	display: table-cell;
+	vertical-align: middle;
+	opacity: 0.5;
+	max-width: 255px;
+	overflow: hidden;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > .nothing-found > span > span {
+	display: block;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > .nothing-found > span > span:before,
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > .nothing-found > span > span:after {
+	content: '"';
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown {
+	position: absolute;
+	/*width: 325px;*/
+	width: auto;
+	min-width: 225px;
+	display: block;
+	height: auto;
+	max-height: 500px;
+	overflow-y: scroll;
+	left: 0;
+	top: 100%;
+	background-color: white;
+	box-sizing: border-box;
+	color: black;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.25);
+	visibility: hidden;
+	opacity: 0;
+	transition: all .125s ease-in-out;
+	overflow: visible;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown.visible {
+	/*display: block;*/
+	opacity: 1;
+	visibility: visible;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown .arrow {
+	position: absolute;
+	width: 0;
+	bottom: 100%;
+	left: 10px;
+	height: 0;
+	border-style: solid;
+	border-width: 0 10px 10px 10px;
+	border-color: transparent transparent white transparent;
+	transition: all .1s;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown .arrow.color {
+	border-color: transparent transparent var(--main) transparent;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul {
+	height: 100%;
+	width: 100%;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li {
+	transition: all .1s;
+	height: 80px;
+	padding: 10px 10px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	box-sizing: border-box;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li:not(.nothing-found):hover {
+	background: var(--main);
+	color: white;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li:not(.nothing-found):hover > .followbtn-container > a {
+	border-color: white;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > a {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > img {
+	height: 100%;
+	border-radius: 50em;
+	margin-right: 10px;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .pinfo-container {
+	margin-right: 75px;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .pinfo-container > .pinfo-container-top {
+	height: 50%;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .pinfo-container > .pinfo-container-top > .name {
+	font-weight: 700;
+	font-size: 1em;
+	display: block;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .pinfo-container > .pinfo-container-top > .username {
+	font-weight: 300;
+	font-size: 0.8em;
+	display: block;
+	margin-top: 2.5px;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .pinfo-container > .pinfo-container-top > .username:before {
+	content: '@';
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .pinfo-container > .pinfo-container-bottom {
+	height: 50%;
+	width: auto;
+	white-space: nowrap;
+	display: table;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .pinfo-container > .pinfo-container-bottom > span {
+	font-size: 0.65em;
+	display: table-cell;
+	vertical-align: bottom;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .pinfo-container > .pinfo-container-bottom > span > span {
+	margin-left: 5px;
+	font-weight: 400;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .pinfo-container > .pinfo-container-bottom > span:first-of-type > span:after {
+	content: '|';
+	padding: 0 5px;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .followbtn-container {
+	height: 100%;
+	padding-left: 25px;
+	padding-right: 10px;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .followbtn-container > a {
+	padding: 5px 10px;
+	border-radius: 5px;
+	border: 2px solid var(--main);
+	font-size: 0.8em;
+	position: relative;
+	z-index: 3;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .followbtn-container > a:before {
+	content: '+';
+	position: absolute;
+	visibility: hidden;
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .followbtn-container > a:hover:before {
+	margin-right: 5px;
+	left: 10px;
+	/*visibility: visible;*/
+}
+#top-bar .topbar-actions > .ref-search .topbar-dropdown > ul > li > .followbtn-container > a:hover {
+	background: white;
+	transition: all .125s;
+	color: var(--main);
+	/*padding: 5px 10px 5px 20px; */
+}
+
+
+/* ---------- ICONS --------- */
+.topbar-icon > .icon:before {
+	/*font-family: 'FontAwesome', sans-serif;*/
+	/*font-family: 'Font Awesome 5 Free'*/
+	font-family: 'Ionicons';
+	font-weight: default;
+	font-size: 1.2em;
+	color: inherit;
+	transition: color .125s;
+}
+.topbar-icon:not(.default):hover > .icon:before {
+	color: var(--main);
+}
+.topbar-icon.notifications> .icon:before {content: '\f3e2';}
+.topbar-icon.search > .icon:before {content: '\f2f5';}
+.topbar-icon.home > .icon:before {content: '\f144';}
+.topbar-icon.messages > .icon:before {content: '\f11c';}
+.topbar-icon.logo > .icon:before {
+	color: var(--main);
+	content: '\f248';
+}
+.topbar-icon.default > .icon:before{
+	content: '\f37d'
+}
+
+
+
+
+

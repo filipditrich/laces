@@ -1,0 +1,32 @@
+<div class="page">
+  <section id="timeline">
+    <div class="cover" style="background-image: url(/file/{{userInfo.0.profile.coverPhoto}})">
+      <div class="profile-image">
+        <img src="/file/{{userInfo.0.profile.profilePic}}" alt="">
+      </div>
+    </div>
+    <div class="stats">
+      <span class="name">{{userInfo.0.name.full}}<span><a href="/user/{{userInfo.0.username}}">{{userInfo.0.username}}</a></span></span>
+      <ul>
+        <li><a href="/user/{{userInfo.0.username}}/followers">{{userInfo.0.stats.followers.length}}<span>followers</span></a></li>
+        <li><a href="/user/{{userInfo.0.username}}/following">{{userInfo.0.stats.following.length}}<span>following</span></a></li>
+        <li><a href="#">???<span>outfits</span></a></li>
+        <li><a href="#">???<span>outfit points</span></a></li>
+        <li class="btn follow"><a href="/user/add/{{userInfo.0.username}}" id="buttonProfileFollowUser"><span>follow</span></a></li>
+      </ul>
+    </div>
+    <div class="timeline-content">
+    </div>
+  </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+

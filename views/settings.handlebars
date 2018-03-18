@@ -1,0 +1,20 @@
+
+<div class="timeline-content">
+  <form action="/upload/profile_pic" method="POST" enctype="multipart/form-data">
+    {{#if msg}}
+      <span class="succ">{{msg}}</span>
+    {{/if}}
+    <h3>Profile Picture Change</h3>
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+  </form>
+
+  <form action="/upload/cover_photo" method="POST" enctype="multipart/form-data">
+    {{#if msg}}
+      <span class="succ">{{msg}}</span>
+    {{/if}}
+    <h3>Cover Photo Change</h3>
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+  </form>
+</div>

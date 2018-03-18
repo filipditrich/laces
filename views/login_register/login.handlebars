@@ -1,0 +1,52 @@
+<div id="notifications">
+
+	{{#if success_msg}}
+	<div class="notification success">
+		<span>{{success_msg}}</span>
+		<span class="close-btn"></span>
+	</div>
+	{{/if}}
+
+	{{#if error_msg}}
+	<div class="notification error">
+		<span>{{error_msg}}</span>
+		<span class="close-btn"></span>
+	</div>
+	{{/if}}
+
+	{{#if error}}
+	<div class="notification error">
+		<span>{{error}}</span>
+		<span class="close-btn"></span>
+	</div>
+	{{/if}}
+
+</div>
+
+<div id="login-form">
+	<div class="log-side">
+		<span class="logo-icon">Laces</span>
+	</div>
+	<div class="log-container">
+		<header>
+			<h1>Login</h1>
+		</header>
+		<form action="/users/login" method="POST" class="form-login">
+			<ul class="form-login-list">
+				<li>
+					<input type="text" name="username">
+					<label for="username">Username</label>
+					{{!-- <span class="error-msg">An error occured while proceeding.</span> --}}
+					<input type="password" name="password">
+					<label for="password">Password</label>
+					{{!-- <span class="error-msg">An error occured while proceeding.</span> --}}
+				</li>
+				<button type="submit" class="form-button-login">Login</button>
+			</ul>
+			<footer>
+				<a class="form-button-lostpwd" href="#"><span>Forgot Password?</span></a>
+				<a class="form-button-lostpwd" href="/users/register"><span>Dont have an account yet?</span></a>
+			</footer>
+		</form>
+	</div>
+</div>

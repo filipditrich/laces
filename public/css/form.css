@@ -1,0 +1,454 @@
+#notifications {
+	width: 680px;
+	height: 50px;
+	border-radius: 5px;
+	position: absolute;
+	left: calc(50% - 340px);
+	top: 25px;
+	z-index: 999;
+	display: table;
+	overflow: hidden; 
+}
+#notifications > .notification {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0 25px;
+	border: 1px solid transparent;
+	box-sizing: border-box;
+	border-radius: 5px;
+	position: relative;
+}
+#notifications > .notification.success {
+	background: #DFF1D8;
+	color: #3C763D;
+	border-color: #C1D3BA;
+}
+#notifications > .notification.success:before {
+	font-family: 'Ionicons';
+	content: '\f3fe';
+	margin-right: 10px;
+}
+#notifications > .notification.error {
+	background: #F0DDDC;
+	color: #A94442;
+	border-color: #D1BFBE;
+}
+#notifications > .notification.error:before {
+	font-family: 'Ionicons';
+	content: '\f101';
+	margin-right: 10px;
+}
+#notifications > .notification .close-btn:after {
+	content: '\f404';
+	font-family: 'Ionicons';
+	font-size: 1.25em;
+	position: absolute;
+	right: 12.5px;
+	opacity: 0.5;
+	cursor: pointer;
+}
+#registration-form {
+	width: 680px;
+	height: 420px;
+	border-radius: 5px;
+	position: absolute;
+	top: calc(50% - 210px);
+	left: calc(50% - 340px);
+	overflow: auto; 
+}
+#registration-form .reg-side {
+	width: 20%;
+	height: 100%;
+	background-color: var(--main);
+	float: left;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+	padding: 25px 0;
+	box-sizing: border-box;
+}
+#registration-form .reg-side > .logo-icon {
+	font-weight: 300;
+	font-size: 2.25em;
+	color: white;
+	width: 100%;
+	align-self: flex-start;
+}
+#registration-form .reg-side > .logo-icon:before {
+	content: '\f248';
+	display: block;
+	font-family: 'Ionicons';
+	font-size: 2em;
+}
+#registration-form .reg-side > .back-icon {
+	font-weight: 300;
+	font-size: 2.25em;
+	width: 100%;
+	color: white;
+	align-self: flex-end;
+	cursor: pointer;
+}
+#registration-form .reg-side > .back-icon:before {
+	content: '\f2ca';
+	display: block;
+	font-family: 'Ionicons';
+	font-size: 1em;
+}
+#registration-form .reg-container {
+	width: 80%;
+	height: 100%;
+	background: white;
+	float: left;
+	padding: 30px;
+	box-sizing: border-box;
+}
+#registration-form .reg-container > header {
+	width: 100%;
+	height: 15%;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	margin-bottom: 25px;
+	box-sizing: border-box;
+}
+#registration-form .reg-container > header > h1 {
+	padding: 10px 0;
+	font-size: 1.25em;
+	color: var(--main);
+}
+#registration-form .reg-container > form > footer {
+	width: 100%;
+	height: 20%;
+	position: absolute;
+	bottom: 0;
+}
+#registration-form .reg-container > form .form-button-register {
+	padding: 7.5px 20px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	background: var(--main);
+	border-radius: 50em;
+	color: white;
+	font-weight: 300;
+	text-transform: capitalize;
+	font-size: 0.8em;
+	border: none;
+}
+#registration-form .reg-container > form .form-button-clear {
+	color: black;
+	opacity: 0.35;
+	border: none;
+	background: transparent;
+	position: absolute;
+	bottom: 0;
+	font-size: 0.8em;
+}
+#registration-form .reg-container > form button {
+	cursor: pointer;
+}
+#registration-form .reg-container > form button:focus {
+	resize: none;
+	outline: none;
+}
+#registration-form .reg-container > form {
+	height: calc(85% - 25px);
+	margin-bottom: 25px;
+	position: relative;
+}
+#registration-form .reg-container > form > ul {
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	width: 100%;
+	height: 75%;
+	padding-bottom: 5%;
+}
+#registration-form .reg-container > form > ul > li {
+	height: 112%;
+	width: 47.5%;
+	position: relative;
+	float: left;
+}
+#registration-form .reg-container > form > ul > li.first {
+	margin-right: 5%;
+}
+#registration-form .reg-container > form > ul > li > ul {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+#registration-form .reg-container > form > ul > li > ul > li {
+	height: 20%;
+	margin-bottom: 5%;
+	position: relative;
+}
+#registration-form .reg-container > form > ul > li > ul > li input:focus,
+#registration-form .reg-container > form > ul > li > ul > li select:focus {
+	resize: none;
+	border-color: var(--main);
+	outline: none;
+}
+#registration-form .reg-container > form > ul > li > ul > li input,
+#registration-form .reg-container > form > ul > li > ul > li select {
+	width: 100%;
+	float: left;
+	box-sizing: border-box;
+	border: none;
+	margin-right: 10px;
+	height: 80%;
+	border-bottom: 1px solid rgba(0,0,0,0.35);
+	font-size: 0.85em;
+	background: transparent;
+	position: relative;
+	z-index: 1;
+	border-radius: 0;
+	padding-left: 7.5px;
+	box-sizing: border-box;
+}
+#registration-form .reg-container > form > ul > li > ul > li label {
+	position: absolute;
+	font-size: 0.75em;
+	opacity: 0.5;
+	width: calc(50% - 10px);
+	bottom: 45%;
+	left: 0;
+	z-index: 0;
+	transition: all .35s, opacity .1s;
+	opacity: 0.5;
+	padding-left: 7.5px;
+	box-sizing: border-box;
+}
+#registration-form .reg-container > form > ul > li > ul > li span {
+	position: absolute;
+	font-size: 0.6em;
+	opacity: 0.5;
+	width: calc(50% - 10px);
+	left: 0;
+	padding-left: 7.5px;
+	top: 90%;
+	color: #c0392b;
+	white-space: nowrap;
+}
+#registration-form .reg-container > form > ul > li > ul > li > ul {
+	width: 100%;
+	height: 100%;
+}
+#registration-form .reg-container > form > ul > li > ul > li > ul > li {
+	width: 47.5%;
+	float: left;
+	height: 100%;
+	position: relative;
+}
+#registration-form .reg-container > form > ul > li > ul > li > ul > li:last-of-type {
+	margin-left: 5%;
+}
+#registration-form .reg-container > form > ul > li > ul > li input::-webkit-input-placeholder {
+	opacity: 0.35;
+}
+#registration-form .reg-container > form > ul > li > ul > li input:focus::-webkit-input-placeholder {
+	opacity: 0;
+}
+#registration-form .reg-container > form > ul > li > ul > li input::-webkit-input-placeholder {
+	opacity: 0;
+}
+#registration-form .reg-container > form > ul > li > ul > li input.typed + label {
+	position: absolute;
+	font-size: 0.6em;
+	opacity: 0.5;
+	width: calc(50% - 10px);
+	bottom: 90%;
+}
+#registration-form .reg-container > form > ul > li > ul > li select.typed + label {
+	position: absolute;
+	font-size: 0.6em;
+	opacity: 0.5;
+	padding-left: 7.5px;
+	width: calc(50% - 10px);
+	bottom: 90%;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: var(--main);
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+
+
+#login-form {
+	width: 680px;
+	height: 420px;
+	border-radius: 5px;
+	position: absolute;
+	top: calc(50% - 210px);
+	left: calc(50% - 340px);
+	overflow: auto; 
+}
+#login-form .log-side {
+	width: 40%;
+	height: 100%;
+	background-color: var(--main);
+	float: left;
+	display: table;
+	text-align: center;
+}
+#login-form .log-side > .logo-icon {
+	display: table-cell;
+	vertical-align: middle;
+	font-weight: 300;
+	font-size: 2.25em;
+	color: white;
+}
+#login-form .log-side > .logo-icon:before {
+	content: '\f248';
+	display: block;
+	font-family: 'Ionicons';
+	font-size: 4em;
+}
+#login-form .log-container {
+	width: 60%;
+	height: 100%;
+	background: white;
+	float: left;
+	padding: 30px;
+	box-sizing: border-box;
+}
+#login-form .log-container > header {
+	width: 100%;
+	height: 15%;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	margin-bottom: 25px;
+	box-sizing: border-box;
+}
+#login-form .log-container > header > h1 {
+	padding: 10px 0;
+	font-size: 1.5em;
+	color: var(--main);
+	text-align: center;
+}
+#login-form .log-container > form > footer {
+	width: 100%;
+	height: 20%;
+	position: absolute;
+	bottom: 0;
+}
+#login-form .log-container > form .form-button-login {
+	padding: 12.5px 50px;
+	position: absolute;
+	left: 17.5%;
+	bottom: 15%;
+	width: 65%;
+	background: var(--main);
+	border-radius: 50em;
+	color: white;
+	font-weight: 300;
+	text-transform: capitalize;
+	font-size: 0.8em;
+	border: none;
+}
+#login-form .log-container > form .form-button-lostpwd {
+	display: table;
+	height: 100%;
+	width: 50%;
+	text-align: center;
+	float: left;
+}
+#login-form .log-container > form .form-button-lostpwd > span {
+	color: rgba(0,0,0,0.35);
+	font-size: 0.8em;
+	display: table-cell;
+	vertical-align: middle;
+}
+#login-form .log-container > form button {
+	cursor: pointer;
+}
+#login-form .log-container > form button:focus {
+	resize: none;
+	outline: none;
+}
+#login-form .log-container > form {
+	height: calc(85% - 25px);
+	margin-bottom: 25px;
+	position: relative;
+}
+#login-form .log-container > form > ul > li > input:focus {
+	resize: none;
+	border-color: var(--main);
+	outline: none;
+}
+#login-form .log-container > form > ul > li > input {
+	width: calc(50% - 10px);
+	float: left;
+	border: none;
+	margin-right: 10px;
+	height: 80%;
+	border-bottom: 1px solid rgba(0,0,0,0.35);
+	font-size: 0.9em;
+	background: transparent;
+	position: relative;
+	z-index: 1;
+	border-radius: 0;
+	box-sizing: border-box;
+	padding-bottom: 10px;
+}
+#login-form .log-container > form > ul {
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	width: 100%;
+	height: 75%;
+	position: relative;
+}
+#login-form .log-container > form  > ul > li {
+	float: left;
+}
+#login-form .log-container > form  > ul > li > input {
+	width: 65%;
+	margin: 15px 17.5%;
+	font-size: 1.125em;
+}
+#login-form .log-container > form > ul > li > label {
+	position: absolute;
+	font-size: 0.9em;
+	opacity: 0.5;
+	width: 65%;
+	left: 17.5%;
+	z-index: 0;
+	top: 20px;
+	transition: all .35s, opacity .1s;
+	box-sizing: border-box;
+}
+#login-form .log-container > form > ul > li > label:last-of-type {
+	top: 40%;
+}
+#login-form .log-container > form > ul > li > input.typed + label {
+	font-size: 0.6em;
+	opacity: 0.5;
+	top: 0;
+}
+#login-form .log-container > form > ul > li > input.typed + label:last-of-type {
+	top: calc(20% + 20px);
+}
+#login-form .log-container > form > ul > li > span {
+	position: absolute;
+	width: 65%;
+	left: 17.5%;
+	font-size: 0.6em;
+	top: 23.5%;
+	color: #c0392b;
+}
+#login-form .log-container > form > ul > li > span:last-of-type {
+	top: 53.5%;
+}
+
+
+

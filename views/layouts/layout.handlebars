@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Laces</title>
+	<link rel="stylesheet" href="/fonts/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/desktop.css">
+	<link rel="stylesheet" href="/css/menu.css">
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/css/global.css">
+	<link rel="stylesheet" href="/ionicons/css/ionicons.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
+</head>
+<body>
+
+	<nav id="top-bar">
+		<div class="container">
+			<ul class="topbar-actions">
+				<li class="ref-home selected">
+					<a href="#" class="topbar-icon home"><span class="icon"></span></a>
+				</li>
+				<li class="ref-search">
+					<a href="#" class="topbar-icon search"><span class="icon"></span></a>
+					<input type="text" placeholder="Search..." name="search-box">
+					<div class="topbar-dropdown">
+						<span class="arrow"></span>
+						<ul class="dropdown-items">
+							<li class="nothing-found">
+								<span><span></span>was not found</span>
+							</li>
+							<li class="show-more">
+								<a href="#">Open extended search</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="heading"><h1 class="topbar-icon logo"><span class="icon"></span></h1></li>
+				<li class="ref-messages">
+					<a href="#" class="topbar-icon messages"><span class="icon"></span><div class="nc">
+						<span>?</span>
+					</div></a>
+					<div class="topbar-dropdown">
+						<span class="arrow"></span>
+						<ul class="dropdown-items">
+							{{#if messages}}
+								{{#each messages}}
+									<li read="true">
+										<a href="/messages/{{this.from.username}}"></a>
+										<img src="/file/{{this.from.profilePic}}" alt="">
+										<div class="message-container">
+											<div class="message-container-top">
+												<span>{{this.from.name}}</span>
+												<abbr title="timestamp">{{#timeFormat this.when}}{{/timeFormat}}</abbr>
+											</div>
+											<div class="message-container-bottom">
+												<span>{{this.message}}</span>
+											</div>
+										</div>
+									</li>	
+								{{/each}}
+							{{else}}
+								<li class="no-notif">
+									<span>You have no messages</span>
+								</li>
+							{{/if}}
+							<li class="show-more">
+								<a href="#">Show all in Chat</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="ref-notifications">
+					<a href="#" class="topbar-icon notifications"><span class="icon"></span><div class="nc">
+						<span>?</span>
+					</div></a>
+					<div class="topbar-dropdown">
+						<span class="arrow"></span>
+						<ul class="dropdown-items">
+							{{#if notifications}}
+								{{#each notifications}}
+									<li read="{{this.read}}">
+										<a href="/user/{{this.from.username}}"></a>
+										<img src="/file/{{this.from.profilePic}}" alt="">
+										<div class="notification-container">
+											<div class="notification"><span><strong>{{this.from.name}}</strong> {{this.text}}<abbr title="timestamp">a minute ago</abbr></span>
+											</div>
+										</div>
+									</li>	
+								{{/each}}
+							{{else}}
+								<li class="no-notif">
+									<span>You have no notifications</span>
+								</li>
+							{{/if}}
+							<li class="show-more">
+								<a href="#">Show all in Notification Center</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="ref-profile">
+					<a href="#" class="topbar-icon-profile">
+						<img src="/file/{{user.profile.profilePic}}" alt="Profile and settings">
+					</a>
+					<div class="topbar-dropdown">
+						<span class="arrow"></span>
+						<ul class="dropdown-items">
+							<li class="topbar-dropdown-heading"><a href="/">
+								<span>{{user.name.first}} {{user.name.last}}<span>{{user.username}}</span></span>
+							</a></li>
+							<li><a href="#settings" class="topbar-icon default"><span class="icon">Settings</span></a></li>
+							<li><a href="/users/logout" class="topbar-icon default"><span class="icon">Logout</span></a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+	</nav>
+
+	<div class="page">
+	  <section id="timeline">
+	    <div class="cover" style="background-image: url(/file/{{user.profile.coverPhoto}})">
+	      <div class="profile-image">
+	        <img id="profilePic_main" src="/file/{{user.profile.profilePic}}" alt="">
+	        <form action="/upload/profile_pic" method="POST" enctype="multipart/form-data" id="profilePic_upload">
+			    <input type="file" name="file" style="display: none" id="profilePic_input">
+			  </form>
+	      </div>
+	      <span id="coverPhoto_main">change cover</span>
+	       <form action="/upload/cover_photo" method="POST" enctype="multipart/form-data" id="coverPhoto_upload">
+		    <input type="file" name="file" style="display: none" id="coverPhoto_input">
+		  </form>
+	    </div>
+	    <div class="stats">
+	      <span class="name">{{user.name.first}} {{user.name.last}}<span><a href="/user/{{user.username}}">{{user.username}}</a></span></span>
+	      <ul>
+	        <li><a href="/user/{{user.username}}/followers">{{user.stats.followers.length}}<span>followers</span></a></li>
+	        <li><a href="/user/{{user.username}}/following">{{user.stats.following.length}}<span>following</span></a></li>
+	        <li><a href="#">???<span>outfits</span></a></li>
+	        <li><a href="#">???<span>outfit points</span></a></li>
+	        <li class="btn follow"><a href="#" id="test"><span>edit</span></a></li>
+	      </ul>
+	    </div>
+	    {{{body}}}
+	  </section>
+	</div>
+
+	<script src="/js/socket.io-2.0.4.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/sockets.js"></script>
+</body>
+</html>
